@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile - jQuery Practice</title>
+
+    <style>
+        body { font-family: Verdana; }
+
+        #profile-card {
+            width: 320px;
+            padding: 20px;
+            border: 2px solid #aaa;
+            background: #f9f9f9;
+            margin-bottom: 25px;
+            transition: 0.4s;
+        }
+
+        .highlighted {
+            border: 4px solid orange;
+            background-color: lightyellow;
+        }
+
+        .dark-mode {
+            background: #222;
+            color: #f0f0f0;
+        }
+
+        .rounded { border-radius: 50%; }
+        .shadow { box-shadow: 0 0 12px rgb(43, 39, 39); }
+        
+    </style>
+</head>
+<body>
+
+<h2>My Profile Card</h2>
+
+<div id="profile-card">
+    <h3 id="student-name">ButterFly</h3>
+    <p id="student-bio">A developer who loves butterfly .</p>
+
+    <img id="profile-photo" src="butterfly.jpg" width="150px"><br><br>
+
+    <input type="text" id="nickname-input" placeholder="Type your nickname here">
+
+    <ul id="skills-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+    </ul>
+</div>
+
+<h3>Result:</h3>
+<p id="output"></p>
+
+<h4>GET & SET</h4>
+<button id="show-name">Display Name</button>
+<button id="change-name">Update Name</button>
+<button id="show-bio">Display Bio</button>
+<button id="get-input">Get Nickname</button>
+<button id="set-input">Set Nickname</button>
+
+<h4>CSS CLASSES</h4>
+<button id="highlight">Highlight Card</button>
+<button id="remove-highlight">Remove Highlight</button>
+<button id="toggle-dark">Toggle Dark Mode</button>
+<button id="rounded">Toggle Rounded Photo</button>
+
+<h4>CSS METHOD</h4>
+<button id="red-bg">Change Background</button>
+<button id="reset-bg">Reset Background</button>
+
+<h4>HIDE & SHOW</h4>
+<button id="hide-photo">Hide Photo</button>
+<button id="show-photo">Show Photo</button>
+<button id="toggle-bio">Toggle Bio</button>
+
+<h4>FADE</h4>
+<button id="fade-out">Fade Out</button>
+<button id="fade-in">Fade In</button>
+<button id="fade-half">Fade to 50%</button>
+
+<h4>SLIDE</h4>
+<button id="slide-up">Slide Up Skills</button>
+<button id="slide-down">Slide Down Skills</button>
+<button id="slide-toggle">Toggle Skills</button>
+
+<h4>ANIMATE</h4>
+<button id="animate">Bounce Card</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $("#show-name").click(function(){
+        let name = $("#student-name").text();
+        $("#output").text("Name: " + name);
+    });
+
+    $("#change-name").click(function(){
+        $("#student-name").text("Jordan Smith");
+        $("#output").text("Name updated!");
+    });
+
+    $("#show-bio").click(function(){
+        let bio = $("#student-bio").html();
+        $("#output").text("Bio: " + bio);
+    });
+
+    $("#get-input").click(function(){
+        let nick = $("#nickname-input").val();
+        $("#output").text("Nickname: " + nick);
+    });
+
+    $("#set-input").click(function(){
+        $("#nickname-input").val("SuperCoder99");
+        $("#output").text("Nickname has been set!");
+    });
+
+    $("#highlight").click(function(){
+        $("#profile-card").addClass("highlighted");
+    });
+
+    $("#remove-highlight").click(function(){
+        $("#profile-card").removeClass("highlighted");
+    });
+
+    $("#toggle-dark").click(function(){
+        $("#profile-card").toggleClass("dark-mode");
+    });
+
+    $("#rounded").click(function(){
+        $("#profile-photo").toggleClass("rounded");
+    });
+
+    $("#red-bg").click(function(){
+        $("#profile-card").css("background", "#3498db");
+        $("#output").text("Background color changed!");
+    });
+
+    $("#reset-bg").click(function(){
+        $("#profile-card").css("background", "#f9f9f9");
+        $("#output").text("Background reset!");
+    });
+
+    $("#hide-photo").click(function(){
+        $("#profile-photo").hide();
+        $("#output").text("Photo hidden.");
+    });
+
+    $("#show-photo").click(function(){
+        $("#profile-photo").show();
+        $("#output").text("Photo visible.");
+    });
+
+    $("#toggle-bio").click(function(){
+        $("#student-bio").toggle();
+    });
+
+    $("#fade-out").click(function(){
+        $("#profile-card").fadeOut("slow");
+    });
+
+    $("#fade-in").click(function(){
+        $("#profile-card").fadeIn("slow");
+    });
+
+    $("#fade-half").click(function(){
+        $("#profile-card").fadeTo("slow", 0.5);
+    });
+
+    // ===== SLIDE =====
+    $("#slide-up").click(function(){
+        $("#skills-list").slideUp("slow");
+    });
+
+    $("#slide-down").click(function(){
+        $("#skills-list").slideDown("slow");
+    });
+
+    $("#slide-toggle").click(function(){
+        $("#skills-list").slideToggle("slow");
+    });
+
+    $("#animate").click(function(){
+        $("#profile-card")
+            .animate({marginLeft: "150px"}, 600)
+            .animate({marginLeft: "0px"}, 600)
+            .animate({opacity: 0.5}, 400)
+            .animate({opacity: 1}, 400);
+    });
+    $("#profile-photo").mouseenter(function(){
+        $(this).addClass("shadow");
+        $("#output").text("Mouse is over the photo!");
+    });
+
+    $("#profile-photo").mouseleave(function(){
+        $(this).removeClass("shadow");
+        $("#output").text("Mouse left the photo.");
+    });
+
+    $("#nickname-input").keypress(function(e){
+        $("#output").text("You pressed: " + e.key);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $("button").click(function(){
+    var div = $("div");
+    div.animate({top: '300px', height: '150px', width: '150px', opacity: '0.4'}, "slow");
+    div.animate({left: '300px', height: '80px', width: '80px', opacity: '0.8'}, "slow");
+    div.animate({top: '150px', height: '130px', width: '130px', opacity: '0.5'}, "slow");
+    div.animate({left: '0px', height: '100px', width: '100px', opacity: '1'}, "slow");
+
+	div.css("background", " red");
+  });
+});
+</script> 
+</head>
+<body>
+
+<button>Start Animation</button>
+
+<p>Press animation
+
+</p>
+<div style="background:#98bf21;height:100px;width:100px;position:absolute;
+display:flex;align-items:center;justify-content:center;">
+  Hello
+</div>
+</body>
+</html>
